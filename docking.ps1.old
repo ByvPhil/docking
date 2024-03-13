@@ -1,0 +1,1 @@
+Get-WmiObject Win32_USBControllerDevice -ErrorAction Stop | ForEach-Object { [wmi]($_.Dependent) } | Where-Object { ($_.name -like "*Displaylink*" -or $_.name -like "*dock*")-and $_.Status -like "OK"} | Sort-Object Manufacturer, Description| Format-Table  name
